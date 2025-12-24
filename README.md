@@ -159,6 +159,7 @@ Conversation memory is implemented via **prompt accumulation**, not model state.
   python -m training.train
 
 ### Start the chatbot
+python -m inference.chat
 
 ---
 
