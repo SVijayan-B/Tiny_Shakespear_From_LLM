@@ -13,6 +13,20 @@ This project demonstrates **end-to-end LLM engineering**, covering:
 
 The entire system runs **locally** on a consumer GPU (RTX 3050, 6GB VRAM).
 
+## ⚠️ Important Note on Training Data & Quality
+
+> This model was trained on a **relatively small and domain-specific dataset** (Shakespeare text only).
+
+Because of this:
+- The chatbot **does not have general world knowledge**
+- Responses may sometimes feel repetitive or stylistically narrow
+- Output quality is limited by **data size, diversity, and training time**
+
+⚠️ **This is an intentional design choice**, made to:
+- Keep training feasible on a **6GB GPU**
+- Focus on understanding **LLM internals**, not brute-force scale
+- Demonstrate *how ChatGPT-style behavior emerges*, not to compete with large commercial models
+
 ---
 
 ## Key Features
@@ -159,18 +173,55 @@ Conversation memory is implemented via **prompt accumulation**, not model state.
   python -m training.train
 
 ### Start the chatbot
-python -m inference.chat
 
+  python -m inference.chat
+
+---
+
+---
+
+## How to Improve Output Quality Further
+
+Because training data and compute were intentionally limited, quality can be improved by:
+
+### 1. Increasing Dataset Size
+- Add more Shakespeare plays
+- Mix with WikiText-2 or Project Gutenberg
+- Include manually curated Q&A pairs
+
+### 2. Training Longer
+- Increase epochs (5–10)
+- Lower learning rate for stability
+
+### 3. Better Chat Data
+- Manually written instruction-style prompts
+- Cleaner question–answer formatting
+- Remove noisy dialogue transitions
+
+### 4. Model Improvements
+- Increase embedding size (if VRAM allows)
+- Add RoPE positional encoding
+- Implement KV-cache for faster inference
+
+### 5. Inference Tuning
+- Adjust temperature, top-p, repetition penalty
+- Experiment with longer context windows
+
+
+###Tune the parameters in the config.py file for better optimization###
 ---
 
 ## Why This Project Matters
 
 This project avoids black-box abstractions and demonstrates:
+
 - Deep understanding of Transformer internals
 - Practical LLM training on limited hardware
 - Chat behavior driven by data design
 - Real-world inference techniques
 - End-to-end LLM system engineering
+
+It focuses on **understanding and correctness**, not brute-force scale.
 
 ---
 
@@ -187,25 +238,13 @@ This project avoids black-box abstractions and demonstrates:
 
 ---
 
-## Future Improvements
-
-- RoPE positional encoding
-- KV-cache for faster inference
-- FastAPI-based serving
-- Larger datasets
-- Evaluation metrics (perplexity, BLEU-style)
-- Model scaling
-
----
-
 ## Final Note
 
 This project demonstrates that modern LLM systems are not magic — they are the result of:
+
 - Careful architecture design
 - Correct data formatting
 - Efficient training
 - Thoughtful inference control
 
 Building this system from scratch represents a strong foundation in **LLM engineering**.
-
-
