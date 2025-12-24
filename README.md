@@ -1,6 +1,6 @@
 # ShakespeareGPT — Mini ChatGPT Built From Scratch (PyTorch)
 
-ShakespeareGPT is a fully custom **GPT-style chatbot LLM** implemented **from scratch** using PyTorch.  
+ShakespeareGPT is a fully custom **GPT-style chatbot LLM** implemented **from scratch and have about 15million parameters** using PyTorch.  
 The model is trained on Shakespeare text converted into **chat-format data** and is capable of **multi-turn conversational responses** in a Shakespearean style.
 
 This project demonstrates **end-to-end LLM engineering**, covering:
