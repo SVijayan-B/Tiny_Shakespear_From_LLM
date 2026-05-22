@@ -13,7 +13,7 @@ This project demonstrates **end-to-end LLM engineering**, covering:
 
 The entire system runs **locally** on a consumer GPU (RTX 3050, 6GB VRAM).
 
-## ⚠️ Important Note on Training Data & Quality
+## Important Note on Training Data & Quality
 
 > This model was trained on a **relatively small and domain-specific dataset** (Shakespeare text only).
 
@@ -22,7 +22,7 @@ Because of this:
 - Responses may sometimes feel repetitive or stylistically narrow
 - Output quality is limited by **data size, diversity, and training time**
 
-⚠️ **This is an intentional design choice**, made to:
+**This is an intentional design choice**, made to:
 - Keep training feasible on a **6GB GPU**
 - Focus on understanding **LLM internals**, not brute-force scale
 - Demonstrate *how ChatGPT-style behavior emerges*, not to compete with large commercial models
@@ -67,10 +67,10 @@ This project uses **SentencePiece BPE tokenization**.
 
 ### Special Tokens
 
-  <|user|>
-  <|assistant|>
-  <|end|>
-
+    <|user|>
+    <|assistant|>
+    <|end|>
+    
 These tokens define chat behavior and response boundaries.
 
 ---
@@ -79,9 +79,9 @@ These tokens define chat behavior and response boundaries.
 
 Raw Shakespeare text is converted into chat-style samples:
 
-  <|user|> What is honor?
-  <|assistant|> Honor is the crown worn by a virtuous soul.
-  <|end|>
+    <|user|> What is honor?
+    <|assistant|> Honor is the crown worn by a virtuous soul.
+    <|end|>
 
 The model learns:
 - Role separation
@@ -103,10 +103,9 @@ This is the key difference between **GPT** and **ChatGPT-style models**.
 
 ### Training Loss
 
-  Epoch 1 ≈ 2.65
-  Epoch 2 ≈ 1.51
-  Epoch 3 ≈ 0.95
-
+    Epoch 1 ≈ 2.65
+    Epoch 2 ≈ 1.51
+    Epoch 3 ≈ 0.95
 
 A final loss below **1.0** indicates strong learning of structure, intent, and style.
 
@@ -116,9 +115,8 @@ A final loss below **1.0** indicates strong learning of structure, intent, and s
 
 ### Prompt Template
 
-<|user|> {user input}
-<|assistant|>
-
+    <|user|> {user input}
+    <|assistant|>
 
 ### Generation Controls
 - Temperature sampling
@@ -145,23 +143,15 @@ Conversation memory is implemented via **prompt accumulation**, not model state.
 
 ### Example 1
 
-  You: What is love?
-  Bot: Love is a tender madness, born of sighs and fed by longing hearts.
+    You: What is love?
+    Bot: Love is a tender madness, born of sighs and fed by longing hearts.
 
 
-### Example 2 (Multi-turn)
 
-  You: What is honor?
-  Bot: Honor is the jewel set upon the brow of virtue.
+### Example 2
 
-  You: And why do men betray it?
-  Bot: Because desire oft whispers louder than conscience, and frailty bends the will.
-
-
-### Example 3
-
-  You: Give me advice on life.
-  Bot: Walk humbly, speak honestly, and let thy deeds outshine thy words.
+    You: Give me advice on life.
+    Bot: Walk humbly, speak honestly, and let thy deeds outshine thy words.
 
 
 ---
@@ -170,11 +160,11 @@ Conversation memory is implemented via **prompt accumulation**, not model state.
 
 ### Train the model
 
-  python -m training.train
+    python -m training.train
 
 ### Start the chatbot
 
-  python -m inference.chat
+    python -m inference.chat
 
 ---
 
